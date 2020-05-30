@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StateService } from 'src/app/services/state.service';
 import { GameState } from 'src/app/model';
+import { GameActionService } from 'src/app/services/game-action.service';
 
 @Component({
   selector: 'app-table',
@@ -11,7 +12,7 @@ export class TableComponent implements OnInit {
 
   gameState: GameState;
 
-  constructor(private stateService: StateService) { }
+  constructor(private stateService: StateService, private gameActionService: GameActionService) { }
 
   ngOnInit(): void {
 
@@ -21,8 +22,15 @@ export class TableComponent implements OnInit {
     this.stateService.gameState.subscribe( newGameState => {
         this.gameState = newGameState;
     }); 
+
     
   }
+
+  startNewHand() {
+    this.gameActionService.startHand();
+  }
+    
+
   
 
 }

@@ -1,1 +1,25 @@
-{{player.name}}
+<div class="card">
+    
+    <div class="card-header" 
+        [class.action]="player.status === 'action'"
+        [class.folded]="player.status === 'folded'">
+            {{player.name}}</div>
+    <div class="card-body" >
+        Chip count: {{player.chipCount}}<br>
+        <span id="cards">{{printHand(player.currentHand)}}</span><br>
+
+        <button type="button" class="options btn btn-primary" (click)="check(player)">Check</button>
+        <button type="button" class="options btn btn-primary" (click)="call(player)">Call</button>
+        <button type="button" class="options btn btn-primary" (click)="fold(player)">Fold</button>
+
+    </div>
+
+
+    <div class="card-footer" 
+        [class.action]="player.status === 'action'"
+        [class.folded]="player.status === 'folded'">
+            This round: {{player.currAmountThisRound}}</div>
+
+</div>
+
+

@@ -3,7 +3,10 @@ export class GameState {
     runStatus: string; 
     dealerName: string; 
     masterName: string;
-    flop: Card[];
+    flop: {
+        cardA: Card, 
+        cardB: Card
+    };
     turn: Card; 
     river: Card;
     pot: number;

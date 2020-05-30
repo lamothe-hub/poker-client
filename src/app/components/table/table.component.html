@@ -1,7 +1,33 @@
-<app-player [player]="gameState['playersList'][0]"></app-player>
-<br><br>
-<app-player [player]="gameState['playersList'][1]"></app-player>
-<br><br>
-<app-player [player]="gameState['playersList'][2]"></app-player>
-<br><br>
-<app-player [player]="gameState['playersList'][3]"></app-player>
+<div id="playerContainer" class="container">
+
+    <div class="row">
+        <div class="col-3">
+            <app-player [player]="gameState['playersList'][0]"></app-player>
+
+        </div>
+        <div class="col-3">
+            <app-player [player]="gameState['playersList'][1]"></app-player>
+
+        </div>
+        <div class="col-3">
+            <app-player [player]="gameState['playersList'][2]"></app-player>
+
+        </div>
+        <div class="col-3">
+            <app-player [player]="gameState['playersList'][3]"></app-player>
+
+        </div>
+
+    </div>
+
+    <div class="row" id="secondRow">
+        <div class="text-center"> 
+            <button type="button" class="options btn btn-secondary" (click)="startNewHand()">Start New Hand</button>
+
+        </div>
+
+    </div>
+
+    
+    
+</div>

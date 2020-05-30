@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { TableComponent } from './components/table/table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlayerComponent } from './components/player/player.component';
+//import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PlayerComponent } from './components/player/player.component';
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    HttpClientModule
+    HttpClientModule, 
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
