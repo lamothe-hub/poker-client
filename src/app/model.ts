@@ -10,6 +10,8 @@ export class GameState {
     turn: Card; 
     river: Card;
     pot: number;
+    mostRecentBetSize: number;
+
 }
 
 export class Player {

@@ -27,8 +27,8 @@ export class PlayerActionService {
       
   }
   
-  call(playerName) {
-    let callUrl = `${this.baseUrl}/action/${playerName}/call`;
+  call(playerName, callAmount) {
+    let callUrl = `${this.baseUrl}/action/${playerName}/call/${callAmount}`;
     this.http.get<GameState>(callUrl).subscribe( response => {
       this.stateService.gameState.next(response);
     })

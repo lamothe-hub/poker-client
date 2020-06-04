@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GameState, Player, Card } from 'src/app/model';
 import { PlayerActionService } from 'src/app/services/player-action.service';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-player',
@@ -11,7 +12,8 @@ export class PlayerComponent implements OnInit {
 
   @Input() player: Player;
 
-  constructor(private playerActionService: PlayerActionService) { }
+  constructor(private playerActionService: PlayerActionService, 
+    private stateService: StateService) { }
 
   ngOnInit(): void {
   }
@@ -29,7 +31,15 @@ export class PlayerComponent implements OnInit {
   }
 
   call(player: Player) {
-    this.playerActionService.call(player.name);
+
+    let callAmount = 0; 
+    if(player.chipCount + player.currAmountThisRound >= this.stateService.gameState.value.mostRecentBetSize) {
+      callAmount = this.stateService.gameState.value.mostRecentBetSize - player.currAmountThisRound;
+    } else {
+      callAmount = player.chipCount;
+    }
+
+    this.playerActionService.call(player.name, callAmount);
 
   }
 
