@@ -1,0 +1,16 @@
+<div class="container">
+
+    <div class="inputBox shadow-lg p-3 mb-5 bg-white rounded">
+        Name: <input #playerName>
+        <br>
+        Buyin Amount: <input #buyInAmount>
+        <br>
+        Max Buyin: <input #maxBuyinAmount>
+        <br>
+        <button type="button" class="options btn btn-primary" (click)="createGame(playerName.value, buyInAmount.value, maxBuyinAmount.value)">Enter</button>
+        <br>
+        <span id="errorMessage">{{errorMessage}}</span>
+    </div>
+   
+    
+</div>

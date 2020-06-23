@@ -9,6 +9,8 @@ import { PlayerComponent } from './components/player/player.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LobbyComponent } from './components/lobby/lobby.component';
 import { JohnnysTableComponent } from './components/johnnys-table/johnnys-table.component';
+import { CreateComponent } from './components/create/create.component';
+import { JeffreysTableComponent } from './components/jeffreys-table/jeffreys-table.component';
 //import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
@@ -18,7 +20,9 @@ import { JohnnysTableComponent } from './components/johnnys-table/johnnys-table.
     PlayerComponent,
     NavbarComponent,
     LobbyComponent,
-    JohnnysTableComponent
+    JohnnysTableComponent,
+    CreateComponent,
+    JeffreysTableComponent
   ],
   imports: [
     BrowserModule,

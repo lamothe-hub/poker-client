@@ -19,16 +19,23 @@ export class PlayerActionService {
       this.stateService.gameState.next(response);
     })
   }
+
   check(playerName) {
       let checkUrl = `${this.baseUrl}/action/${playerName}/check`;
       this.http.get<GameState>(checkUrl).subscribe( response => {
         this.stateService.gameState.next(response);
       })
-      
   }
   
   call(playerName, callAmount) {
     let callUrl = `${this.baseUrl}/action/${playerName}/call/${callAmount}`;
+    this.http.get<GameState>(callUrl).subscribe( response => {
+      this.stateService.gameState.next(response);
+    })
+  }
+
+  bet(playerName, betAmount) {
+    let callUrl = `${this.baseUrl}/action/${playerName}/bet/${betAmount}`;
     this.http.get<GameState>(callUrl).subscribe( response => {
       this.stateService.gameState.next(response);
     })

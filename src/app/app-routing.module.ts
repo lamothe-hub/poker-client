@@ -3,12 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { OverviewTableComponent } from './components/overview-table/overview-table.component';
 import { LobbyComponent } from './components/lobby/lobby.component';
 import { JohnnysTableComponent } from './components/johnnys-table/johnnys-table.component';
+import { CreateComponent } from './components/create/create.component';
 
 
 const routes: Routes = [
   { path: "join", component: LobbyComponent },
   { path: "johnny", component: JohnnysTableComponent },
-  { path: "**", component: OverviewTableComponent}
+  { path: "create", component: CreateComponent },
+  { path: "overview", component: OverviewTableComponent },
+  { path: "**", component: LobbyComponent}
 ];
 
 @NgModule({

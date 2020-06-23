@@ -1,1 +1,14 @@
-<p>lobby works!</p>
+<div class="container">
+
+    <div class="inputBox shadow-lg p-3 mb-5 bg-white rounded">
+        Name: <input #playerName>
+        <br>
+        Buyin: <input #buyinAmount>
+        <br>
+        <button type="button" class="options btn btn-primary" (click)="enterPlayer(playerName.value, buyinAmount.value)">Enter</button>
+        <br>
+        <span id="errorMessage">{{errorMessage}}</span>
+    </div>
+   
+    
+</div>

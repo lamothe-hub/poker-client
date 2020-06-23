@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { StateService } from 'src/app/services/state.service';
 import { GameState, Card } from 'src/app/model';
+import { Subscription, interval } from 'rxjs';
+import { StateService } from 'src/app/services/state.service';
 import { GameActionService } from 'src/app/services/game-action.service';
 import { ManagementService } from 'src/app/services/management.service';
-import { Observable, Subscription, interval } from 'rxjs';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  selector: 'app-jeffreys-table',
+  templateUrl: './jeffreys-table.component.html',
+  styleUrls: ['./jeffreys-table.component.css']
 })
-export class OverviewTableComponent implements OnInit {
+export class JeffreysTableComponent implements OnInit {
 
   gameState: GameState;
   
@@ -99,8 +99,5 @@ export class OverviewTableComponent implements OnInit {
     } 
     return "";
   }
-    
-
-  
 
 }

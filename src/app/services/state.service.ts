@@ -10,19 +10,22 @@ export class StateService {
 
   gameState: BehaviorSubject<GameState> = new BehaviorSubject<GameState>(null);
   baseUrl = 'http://localhost:8085';
+  playerName: string;
   constructor(private http: HttpClient) { }
 
   getStateForPlayer(playerName: string) {
     this.http.get<GameState>(`${this.baseUrl}/state/${playerName}`).subscribe( response => {
       this.gameState.next(response);
-      console.log(this.gameState.value);
     })
   }
 
   getMasterState() {
     this.http.get<GameState>(`${this.baseUrl}/state`).subscribe( response => {
       this.gameState.next(response);
-      console.log(this.gameState.value);
     })
+  }
+
+  getPlayerName() {
+    return this.playerName;
   }
 }

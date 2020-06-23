@@ -14,8 +14,12 @@ export class ManagementService {
 
   addPlayer(playerName: string, playerAmount: number) {
     let addPlayerUrl = `${this.baseUrl}/management/addPlayer/${playerName}/${playerAmount}`;
-    this.http.get<GameState>(addPlayerUrl).subscribe( response => {
-      this.stateService.gameState.next(response);
-    })
+    return this.http.get<GameState>(addPlayerUrl);
   }
+
+  createGame(playerName: string, buyinAmount: number, maxBuyin: number) {
+    let createGameUrl = `${this.baseUrl}/management/createGame/${playerName}/${buyinAmount}/${maxBuyin}`;
+    return this.http.get<GameState>(createGameUrl);
+  }
+  
 }
