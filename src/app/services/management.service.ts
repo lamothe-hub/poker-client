@@ -6,20 +6,16 @@ import { GameState } from '../model';
 @Injectable({
   providedIn: 'root'
 })
-export class GameActionService {
-
+export class ManagementService {
   baseUrl: string = "http://localhost:8085"
 
   constructor(private stateService: StateService, 
     private http: HttpClient) { }
 
-  startHand() {
-   let foldUrl = `${this.baseUrl}/game/startHand`;
-    this.http.get<GameState>(foldUrl).subscribe( response => {
-        this.stateService.gameState.next(response);
-        
+  addPlayer(playerName: string, playerAmount: number) {
+    let addPlayerUrl = `${this.baseUrl}/management/addPlayer/${playerName}/${playerAmount}`;
+    this.http.get<GameState>(addPlayerUrl).subscribe( response => {
+      this.stateService.gameState.next(response);
     })
-
-    
   }
 }

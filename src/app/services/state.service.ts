@@ -12,9 +12,17 @@ export class StateService {
   baseUrl = 'http://localhost:8085';
   constructor(private http: HttpClient) { }
 
-  getState() {
+  getStateForPlayer(playerName: string) {
+    this.http.get<GameState>(`${this.baseUrl}/state/${playerName}`).subscribe( response => {
+      this.gameState.next(response);
+      console.log(this.gameState.value);
+    })
+  }
+
+  getMasterState() {
     this.http.get<GameState>(`${this.baseUrl}/state`).subscribe( response => {
       this.gameState.next(response);
+      console.log(this.gameState.value);
     })
   }
 }

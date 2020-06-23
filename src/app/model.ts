@@ -5,12 +5,15 @@ export class GameState {
     masterName: string;
     flop: {
         cardA: Card, 
-        cardB: Card
+        cardB: Card, 
+        cardC: Card
     };
     turn: Card; 
     river: Card;
     pot: number;
     mostRecentBetSize: number;
+    mostRecentActionReset: string;
+    currTurn: string;
 
 }
 
