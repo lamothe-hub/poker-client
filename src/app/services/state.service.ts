@@ -9,23 +9,44 @@ import { BehaviorSubject } from 'rxjs';
 export class StateService {
 
   gameState: BehaviorSubject<GameState> = new BehaviorSubject<GameState>(null);
-  baseUrl = 'http://localhost:8085';
-  playerName: string;
+  //baseUrl = 'http://localhost:8085';
+  baseUrl: string = "https://poker-app-for-friends.herokuapp.com/";
+
   constructor(private http: HttpClient) { }
 
   getStateForPlayer(playerName: string) {
-    this.http.get<GameState>(`${this.baseUrl}/state/${playerName}`).subscribe( response => {
-      this.gameState.next(response);
+    this.http.get<GameState>(`${this.baseUrl}/state/${playerName}/dummy`).subscribe( response => {
+      if(this.dataChanged(this.gameState.value, response)) {
+        this.gameState.next(response);
+      }
     })
   }
 
   getMasterState() {
     this.http.get<GameState>(`${this.baseUrl}/state`).subscribe( response => {
-      this.gameState.next(response);
+      if(this.dataChanged(this.gameState.value, response)) {
+        this.gameState.next(response);
+      }
     })
   }
 
-  getPlayerName() {
-    return this.playerName;
+  dataChanged(previous: GameState, next: GameState): boolean {
+
+    if(previous == null || next == null) {
+      return true;
+    }
+
+    if(
+      previous.currTurn != next.currTurn ||
+      previous.dealerName != next.dealerName ||
+      previous.runStatus != next.runStatus ||
+      previous.pot != next.pot ||
+      previous.mostRecentBetSize != next.mostRecentBetSize
+      ) {
+        return true;
+      }
+
+    return false;
   }
+
 }

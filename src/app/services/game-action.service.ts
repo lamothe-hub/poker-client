@@ -8,15 +8,15 @@ import { GameState } from '../model';
 })
 export class GameActionService {
 
-  baseUrl: string = "http://localhost:8085"
-
+  //baseUrl: string = "http://localhost:8085"
+  baseUrl: string = "https://poker-app-for-friends.herokuapp.com/";
   constructor(private stateService: StateService, 
     private http: HttpClient) { }
 
   startHand() {
    let foldUrl = `${this.baseUrl}/game/startHand`;
     this.http.get<GameState>(foldUrl).subscribe( response => {
-        this.stateService.gameState.next(response);
+        this.stateService.getStateForPlayer(sessionStorage.getItem("playerName"));
         
     })
 

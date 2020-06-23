@@ -12,4 +12,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goToCreate() {
+    console.log("going to create");
+  }
+
 }

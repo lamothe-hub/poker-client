@@ -25,7 +25,8 @@ export class LobbyComponent implements OnInit {
       console.log(playerName + " has been successfully added...");
       //this.stateService.gameState.next(response);
       sessionStorage.setItem("playerName", playerName);
-      this.router.navigate(['/overview']);
+      this.stateService.getStateForPlayer(playerName);
+      this.router.navigate(['/jeffrey']);
     }, error => {
       this.errorMessage = "That name is already taken.";
       console.error("Error: " + error.error);

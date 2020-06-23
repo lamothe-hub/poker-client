@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CreateComponent implements OnInit {
 
+  errorMessage = "";
   constructor( private managementService: ManagementService, 
     private stateService: StateService, 
     private router: Router) { }
@@ -22,7 +23,7 @@ export class CreateComponent implements OnInit {
       console.log("Game created successfully");
       this.stateService.gameState.next(state);
       sessionStorage.setItem("playerName", playerName);
-      this.router.navigate(['/overview']);
+      this.router.navigate(['/jeffrey']);
     }, error => {
       console.error(error.error);
     })

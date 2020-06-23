@@ -1,1 +1,35 @@
-<p>jeffreys-table works!</p>
+<div id="playerContainer" class="container">
+
+    <div class="row">
+        <div class="col-3" *ngFor="let player of gameState['playersList']">
+            <app-player [player]="player"></app-player>
+        </div>
+    </div>
+
+    <div class="row" id="secondRow">
+        <div class="col-3">
+
+            <button [hidden]="!isMaster()"  type="button" class="options btn btn-secondary" (click)="startNewHand()">Start New Hand</button>
+
+        </div>
+        <div class="col-6">
+            <span id="cards">{{printFlop()}} {{printTurn()}} {{printRiver()}}</span><br>   
+        </div>
+        <div class="col-3" [hidden]="!isMaster()">
+            <span><strong>runStatus:</strong> {{gameState.runStatus}}</span><br>
+            <span><strong>dealerName:</strong> {{gameState.dealerName}}</span><br>
+            <span><strong>masterName:</strong> {{gameState.masterName}}</span><br>
+            <span><strong>pot:</strong> {{gameState.pot}}</span><br>
+            <span><strong>mostRecentBetSize:</strong> {{gameState.mostRecentBetSize}}</span><br>
+            <span><strong>mostRecentActionReset:</strong> {{gameState.mostRecentActionReset}}</span><br>
+            <span><strong>currTurn:</strong> {{gameState.currTurn}}</span><br>
+
+
+        </div>
+        
+
+    </div>
+
+    
+    
+</div>

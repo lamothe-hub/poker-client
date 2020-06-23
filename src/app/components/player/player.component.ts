@@ -18,6 +18,21 @@ export class PlayerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isCurrTurn(player: Player) {
+    let playerName = sessionStorage.getItem("playerName"); 
+    if(player.name === playerName && this.stateService.gameState.value.currTurn === playerName) {
+      return true;
+    } 
+    return false;
+  }
+
+  isMaster() {
+    let playerName = sessionStorage.getItem("playerName"); 
+    if(playerName === this.stateService.gameState.value.masterName ) {
+      return true;
+    }
+    return false;
+  }
   printHand(hand) {
     var handString = "";
     handString = this.getFaceCardNumber(hand.cardA) +  this.getSuitLetter(hand.cardA) + " | ";
@@ -26,11 +41,27 @@ export class PlayerComponent implements OnInit {
   }
 
   check(player: Player) {
+    let playerName = sessionStorage.getItem("playerName"); 
+    this.playerActionService.check(playerName);
+
+  }
+
+  checkMaster(player: Player) {
     this.playerActionService.check(player.name);
 
   }
 
   call(player: Player) {
+    let playerName = sessionStorage.getItem("playerName"); 
+    let callAmount = 0; 
+    if(player.chipCount + player.currAmountThisRound >= this.stateService.gameState.value.mostRecentBetSize) {
+      callAmount = this.stateService.gameState.value.mostRecentBetSize - player.currAmountThisRound;
+    } else {
+      callAmount = player.chipCount;
+    }
+    this.playerActionService.call(playerName, callAmount);
+  }
+  callMaster(player: Player) {
 
     let callAmount = 0; 
     if(player.chipCount + player.currAmountThisRound >= this.stateService.gameState.value.mostRecentBetSize) {
@@ -44,7 +75,18 @@ export class PlayerComponent implements OnInit {
   }
 
   fold(player: Player) {
+    let playerName = sessionStorage.getItem("playerName"); 
+    this.playerActionService.fold(playerName);
+
+  }
+
+  foldMaster(player: Player) {
     this.playerActionService.fold(player.name);
+  }
+
+  bet(player:Player, amount: number) {
+    let playerName = sessionStorage.getItem("playerName"); 
+    this.playerActionService.bet(playerName, amount);
   }
 
   getFaceCardNumber(card: Card) {

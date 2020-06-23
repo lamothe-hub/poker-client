@@ -20,12 +20,30 @@ export class JeffreysTableComponent implements OnInit {
 
   ngOnInit(): void {
     
+    let currPlayerName = sessionStorage.getItem("playerName")
+    if(currPlayerName) {
+      this.stateService.getStateForPlayer(currPlayerName);
+    }
+
     this.stateService.gameState.subscribe( newGameState => {
         this.gameState = newGameState;
     }); 
 
     this.subscription = interval(1000).subscribe(val => {
-      this.stateService.getMasterState();
+      console.log("triggerring the interval");
+      if(this.gameState.runStatus === "end") {
+        console.log("In the end if statement");
+        this.stateService.getMasterState(); 
+      } else {
+        let playerName = sessionStorage.getItem("playerName");
+        if(playerName != null) {
+          console.log("Refresh the game state for " + playerName);
+          this.stateService.getStateForPlayer(playerName);
+        } else {
+          console.log("Could not refresh")
+        }
+      }
+      
     })
     
   }
@@ -36,7 +54,7 @@ export class JeffreysTableComponent implements OnInit {
 
   isMaster() {
     let playerName = sessionStorage.getItem("playerName"); 
-    if(playerName === this.stateService.gameState.value.masterName ) {
+    if(playerName === this.stateService.gameState.value["masterName"] ) {
       return true;
     }
     return false;

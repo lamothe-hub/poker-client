@@ -8,9 +8,29 @@
         Chip count: {{player.chipCount}}<br>
         <span id="cards">{{printHand(player.currentHand)}}</span><br>
 
-        <button type="button" class="options btn btn-primary" (click)="check(player)">Check</button>
-        <button type="button" class="options btn btn-primary" (click)="call(player)">Call</button>
-        <button type="button" class="options btn btn-primary" (click)="fold(player)">Fold</button>
+        <!--
+
+        <div [hidden]="!isMaster()">
+            <button type="button" class="options btn btn-primary" (click)="checkMaster(player)">Check</button>
+            <button type="button" class="options btn btn-primary" (click)="callMaster(player)">Call</button>
+            <button type="button" class="options btn btn-primary" (click)="foldMaster(player)">Fold</button>
+        </div>
+        -->
+        
+
+        <div [hidden]="!isCurrTurn(player)">
+            <button type="button" class="options btn btn-primary" (click)="check(player)">Check</button>
+            <button type="button" class="options btn btn-primary" (click)="call(player)">Call</button>
+            <button type="button" class="options btn btn-primary" (click)="fold(player)">Fold</button>
+            <br>
+            <div id="betGroup">
+                <input type="text" class="form-control" #betAmount id="betAmount" placeholder="$">
+                <button type="button" id="betButton" class="options btn btn-primary" (click)="bet(player, betAmount.value)">Bet</button>
+    
+            </div>
+            
+        </div>
+        
 
     </div>
 
