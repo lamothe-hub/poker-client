@@ -9,8 +9,8 @@ import { BehaviorSubject } from 'rxjs';
 export class StateService {
 
   gameState: BehaviorSubject<GameState> = new BehaviorSubject<GameState>(null);
-  //baseUrl = 'http://localhost:8085';
-  baseUrl: string = "https://poker-app-for-friends.herokuapp.com/";
+  baseUrl = 'http://localhost:8085';
+  //baseUrl: string = "https://poker-app-for-friends.herokuapp.com/";
 
   constructor(private http: HttpClient) { }
 

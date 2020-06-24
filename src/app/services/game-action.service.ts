@@ -8,8 +8,8 @@ import { GameState } from '../model';
 })
 export class GameActionService {
 
-  //baseUrl: string = "http://localhost:8085"
-  baseUrl: string = "https://poker-app-for-friends.herokuapp.com/";
+  baseUrl: string = "http://localhost:8085"
+  //baseUrl: string = "https://poker-app-for-friends.herokuapp.com/";
   constructor(private stateService: StateService, 
     private http: HttpClient) { }
 
