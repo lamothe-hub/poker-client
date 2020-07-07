@@ -11,6 +11,14 @@ import { StateService } from 'src/app/services/state.service';
 export class PlayerComponent implements OnInit {
 
   @Input() player: Player;
+  AisSpade: boolean = false;
+  AisDiamond: boolean = false;
+  AisClub: boolean = false;
+  AisHeart: boolean = false;
+  BisSpade: boolean = false;
+  BisDiamond: boolean = false;
+  BisClub: boolean = false;
+  BisHeart: boolean = false;
 
   constructor(private playerActionService: PlayerActionService, 
     private stateService: StateService) { }
@@ -120,5 +128,28 @@ export class PlayerComponent implements OnInit {
     } 
     return "";
   }
+  printCardA(hand)
+  {
+    var cardAString;
+    cardAString = this.getFaceCardNumber(hand.cardA);
+    return cardAString;
+  }
+  printCardB(hand){
+    var cardBString;
+    cardBString = this.getFaceCardNumber(hand.cardB);
+    return cardBString;
+  }
+  setPlayerSuit(hand){
+    if (hand.cardA == undefined) return;
+    
+    if (hand.cardA.suit == 1) this.AisSpade = true;
+    else if (hand.cardA.suit == 2) this.AisDiamond = true;
+    else if (hand.cardA.suit == 3) this.AisClub = true;
+    else if (hand.cardA.suit == 4) this.AisHeart = true;
 
+    if (hand.cardB.suit == 1) this.BisSpade = true;
+    else if (hand.cardB.suit == 2) this.BisDiamond = true;
+    else if (hand.cardB.suit == 3) this.BisClub = true;
+    else if (hand.cardB.suit == 4) this.BisHeart = true;
+  }
 }

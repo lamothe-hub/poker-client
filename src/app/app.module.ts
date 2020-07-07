@@ -11,7 +11,8 @@ import { LobbyComponent } from './components/lobby/lobby.component';
 import { JohnnysTableComponent } from './components/johnnys-table/johnnys-table.component';
 import { CreateComponent } from './components/create/create.component';
 import { JeffreysTableComponent } from './components/jeffreys-table/jeffreys-table.component';
-//import {MatCardModule} from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,14 @@ import { JeffreysTableComponent } from './components/jeffreys-table/jeffreys-tab
     LobbyComponent,
     JohnnysTableComponent,
     CreateComponent,
-    JeffreysTableComponent
+    JeffreysTableComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule, 
-    
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

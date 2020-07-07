@@ -1,22 +1,24 @@
-<div class="card">
+<div class="card" id="container" 
+    [class.action]="player.status === 'action'"
+    [class.folded]="player.status === 'folded'">
     
-    <div class="card-header" 
-        [class.action]="player.status === 'action'"
-        [class.folded]="player.status === 'folded'">
-            {{player.name}}</div>
-    <div class="card-body" >
-        Chip count: {{player.chipCount}}<br>
-        <span id="cards">{{printHand(player.currentHand)}}</span><br>
-
-        <!--
-
-        <div [hidden]="!isMaster()">
-            <button type="button" class="options btn btn-primary" (click)="checkMaster(player)">Check</button>
-            <button type="button" class="options btn btn-primary" (click)="callMaster(player)">Call</button>
-            <button type="button" class="options btn btn-primary" (click)="foldMaster(player)">Fold</button>
-        </div>
-        -->
-        
+    <div class="header secondary-color">
+            <h1 class="player">{{player.name}}</h1>
+    </div>
+    <div class="card body" >
+        <span id="cards" >
+            {{setPlayerSuit(player.currentHand)}}
+            {{printCardA(player.currentHand)}}
+            <img *ngIf=AisSpade src="assets\images\suits\Spade.png" height="17" width="15" >
+            <img *ngIf=AisHeart src="assets\images\suits\heart.png" height="17" width="15" >
+            <img *ngIf=AisDiamond src="assets\images\suits\diamonds.png" height="20" width="19" >
+            <img *ngIf=AisClub src="assets\images\suits\clubs.jpg" height="17" width="15" >
+            {{printCardB(player.currentHand)}}
+            <img *ngIf=BisSpade src="assets\images\suits\Spade.png" height="17" width="15" >
+            <img *ngIf=BisHeart src="assets\images\suits\heart.png" height="17" width="15" >
+            <img *ngIf=BisDiamond src="assets\images\suits\diamonds.png" height="20" width="19" >
+            <img *ngIf=BisClub src="assets\images\suits\clubs.jpg" height="17" width="15" >
+        </span><br> 
 
         <div [hidden]="!isCurrTurn(player)">
             <button type="button" class="options btn btn-primary" (click)="check(player)">Check</button>
@@ -26,19 +28,18 @@
             <div id="betGroup">
                 <input type="text" class="form-control" #betAmount id="betAmount" placeholder="$">
                 <button type="button" id="betButton" class="options btn btn-primary" (click)="bet(player, betAmount.value)">Bet</button>
-    
             </div>
-            
         </div>
-        
-
+        <div id="chipCount">
+            Chip Count: {{player.chipCount}} 
+            <img src="assets\images\gold-coins.png" height="28" width="35" style="display: inline;">
+        </div>
     </div>
-
-
-    <div class="card-footer" 
-        [class.action]="player.status === 'action'"
-        [class.folded]="player.status === 'folded'">
-            This round: {{player.currAmountThisRound}}</div>
+    <div class="footer secondary-color">
+        Current bet: {{player.currAmountThisRound}}
+        <br>
+        Total bet this hand: {{player.currAmountInPot}}
+    </div>
 
 </div>
 

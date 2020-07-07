@@ -1,0 +1,22 @@
+#secondRow {
+    margin-top: 20px;
+    font-size: 25px;
+}
+.table {
+    width: 100%;
+}
+span{ display: block; }
+.pot {
+    left: 40%;
+    position: absolute;
+    align-content: right;
+    text-align: center;
+    font-size: 50pt;
+    margin-top: 10%;
+    color: white;
+    width: 20%;
+    border-radius: 25px;
+}
+#playerContainer {
+    position: relative;
+}

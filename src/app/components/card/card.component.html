@@ -1,0 +1,22 @@
+<div class="outline">
+    <div class="top"><span>{{getFaceCardNumber(card)}}</span>
+    <span>
+        <img *ngIf=isSpade(card) src="assets\images\suits\Spade.png" height="20" width="17" >
+        <img *ngIf=isHeart(card) src="assets\images\suits\heart.png" height="20" width="17" >
+        <img *ngIf=isDiamond(card) src="assets\images\suits\diamonds.png" height="20" width="19" >
+        <img *ngIf=isClub(card) src="assets\images\suits\clubs.jpg" height="20" width="17" >
+    </span></div>
+    <h1>
+        <img *ngIf=isSpade(card) src="assets\images\suits\Spade.png" height="20" width="17" >
+        <img *ngIf=isHeart(card) src="assets\images\suits\heart.png" height="20" width="17" >
+        <img *ngIf=isDiamond(card) src="assets\images\suits\diamonds.png" height="20" width="19" >
+        <img *ngIf=isClub(card) src="assets\images\suits\clubs.jpg" height="20" width="17" >
+    </h1>
+    <div class="bottom">
+        <span>
+        <img *ngIf=isSpade(card) src="assets\images\suits\Spade.png" height="20" width="17" >
+        <img *ngIf=isHeart(card) src="assets\images\suits\heart.png" height="20" width="17" >
+        <img *ngIf=isDiamond(card) src="assets\images\suits\diamonds.png" height="20" width="19" >
+        <img *ngIf=isClub(card) src="assets\images\suits\clubs.jpg" height="20" width="17" >
+    </span><span>{{getFaceCardNumber(card)}}</span></div>
+</div>

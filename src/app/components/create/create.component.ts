@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
       console.log("Game created successfully");
       this.stateService.gameState.next(state);
       sessionStorage.setItem("playerName", playerName);
-      this.router.navigate(['/jeffrey']);
+      this.router.navigate(['/johnny']);
     }, error => {
       console.error(error.error);
     })
