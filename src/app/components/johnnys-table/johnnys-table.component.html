@@ -1,27 +1,10 @@
 <div id="playerContainer" class="container table">
-
-    <div class="row">
-        <div class="col-3" *ngFor="let player of gameState['playersList']">
-            <app-player [player]="player"></app-player>
-        </div>
-    </div>
+    <app-poker-table [gameState]="gameState"></app-poker-table>
 
     <div class="row" id="secondRow">
         <div>
             <button [hidden]="!isMaster()"  type="button" class="options btn btn-secondary" (click)="startNewHand()">Start New Hand</button>
         </div>
-        <!--DISPLAY THE FLOP-->
-        <span *ngFor="let item of gameState.flop" >
-            <app-card [card]="item"></app-card>
-        </span>
-        <!--DISPLAY THE TURN CARD -->
-        <span> 
-            <app-card *ngIf="gameState.turn" [card]="gameState.turn"></app-card>
-        </span>
-        <!--DISPLAY THE RIVER CARD -->
-        <span>
-        <app-card *ngIf="gameState.river" [card]="gameState.river"></app-card>
-        </span>
     </div>
     <div class="pot secondary-color">
         <img src="assets\images\gold-coins.png" height="58" width="70" style="display: inline; padding-bottom: 15px;">

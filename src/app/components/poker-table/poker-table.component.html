@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-3" *ngFor="let player of gameState['playersList']">
+        <app-player [player]="player"></app-player>
+    </div>
+</div>
+
+<div style="background:url(../../../assets/images/poker-table.png) no-repeat" class="poker-table">
+   
+    <!--DISPLAY THE FLOP  <img src="assets/images/poker-table.png" class="img-fluid table">-->
+    <span *ngFor="let item of gameState.flop" >
+        <app-card [card]="item"></app-card>
+    </span>
+    <!--DISPLAY THE TURN CARD -->
+    <span> 
+        <app-card *ngIf="gameState.turn" [card]="gameState.turn"></app-card>
+    </span>
+    <!--DISPLAY THE RIVER CARD -->
+    <span>
+    <app-card *ngIf="gameState.river" [card]="gameState.river"></app-card>
+    </span>
+</div>

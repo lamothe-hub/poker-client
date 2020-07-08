@@ -73,3 +73,7 @@
     bottom: 0px;
     left: 2%;
 }
+.border {
+    border-width: 3px !important;
+    border-color: black !important;
+}

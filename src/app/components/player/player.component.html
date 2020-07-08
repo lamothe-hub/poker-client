@@ -21,18 +21,18 @@
         </span><br> 
 
         <div [hidden]="!isCurrTurn(player)">
-            <button type="button" class="options btn btn-primary" (click)="check(player)">Check</button>
-            <button type="button" class="options btn btn-primary" (click)="call(player)">Call</button>
-            <button type="button" class="options btn btn-primary" (click)="fold(player)">Fold</button>
+            <button type="button" class="options btn btn-outline-dark btn-danger border" (click)="check(player)">Check</button>
+            <button type="button" class="options btn btn-outline-dark btn-danger border" (click)="call(player)">Call</button>
+            <button type="button" class="options btn btn-outline-dark btn-danger border" (click)="fold(player)">Fold</button>
             <br>
             <div id="betGroup">
                 <input type="text" class="form-control" #betAmount id="betAmount" placeholder="$">
-                <button type="button" id="betButton" class="options btn btn-primary" (click)="bet(player, betAmount.value)">Bet</button>
+                <button type="button" id="betButton" class="options btn btn-outline-dark btn-danger border" (click)="bet(player, betAmount.value)">Bet</button>
             </div>
         </div>
         <div id="chipCount">
             Chip Count: {{player.chipCount}} 
-            <img src="assets\images\gold-coins.png" height="28" width="35" style="display: inline;">
+            <img src="assets\images\gold-coins.png" height="28" width="35">
         </div>
     </div>
     <div class="footer secondary-color">
