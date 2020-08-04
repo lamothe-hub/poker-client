@@ -20,11 +20,13 @@ export class LobbyComponent implements OnInit {
   }
 
   enterPlayer(playerName: string, buyinAmount: number) {
-    this.managementService.addPlayer(playerName, buyinAmount).subscribe( response => {
+    this.managementService.addPlayer(playerName, buyinAmount).subscribe( hashCode => {
       this.errorMessage = "";
       console.log(playerName + " has been successfully added...");
       //this.stateService.gameState.next(response);
       sessionStorage.setItem("playerName", playerName);
+      this.stateService.setToJoined();
+      this.stateService.setHashCode(hashCode);
       this.stateService.getStateForPlayer(playerName);
       this.router.navigate(['/jeffrey']);
     }, error => {

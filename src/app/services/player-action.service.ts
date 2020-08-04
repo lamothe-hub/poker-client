@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { StateService } from './state.service';
 import { HttpClient } from '@angular/common/http';
 import { GameState } from '../model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,32 +15,28 @@ export class PlayerActionService {
   constructor(private stateService: StateService, 
     private http: HttpClient) { }
 
-  fold(playerName) {
-    let foldUrl = `${this.baseUrl}/action/${playerName}/fold`;
-    this.http.get<GameState>(foldUrl).subscribe( response => {
-      this.stateService.getStateForPlayer(sessionStorage.getItem("playerName"))
-    })
+  fold(playerName): Observable<GameState> {
+    let token = this.stateService.getHashCode();
+    let foldUrl = `${this.baseUrl}/action/${playerName}/${token}/fold`;
+    return this.http.get<GameState>(foldUrl);
   }
 
-  check(playerName) {
-      let checkUrl = `${this.baseUrl}/action/${playerName}/check`;
-      this.http.get<GameState>(checkUrl).subscribe( response => {
-        this.stateService.getStateForPlayer(sessionStorage.getItem("playerName"))
-      })
+  check(playerName): Observable<GameState>  {
+      let token = this.stateService.getHashCode();
+      let checkUrl = `${this.baseUrl}/action/${playerName}/${token}/check`;
+      return this.http.get<GameState>(checkUrl);
   }
   
-  call(playerName, callAmount) {
-    let callUrl = `${this.baseUrl}/action/${playerName}/call/${callAmount}`;
-    this.http.get<GameState>(callUrl).subscribe( response => {
-      this.stateService.getStateForPlayer(sessionStorage.getItem("playerName"))
-    })
+  call(playerName, callAmount): Observable<GameState>  {
+    let token = this.stateService.getHashCode();
+    let callUrl = `${this.baseUrl}/action/${playerName}/${token}/call/${callAmount}`;
+    return this.http.get<GameState>(callUrl);
   }
 
-  bet(playerName, betAmount) {
-    let callUrl = `${this.baseUrl}/action/${playerName}/bet/${betAmount}`;
-    this.http.get<GameState>(callUrl).subscribe( response => {
-      this.stateService.getStateForPlayer(sessionStorage.getItem("playerName"))
-    })
+  bet(playerName, betAmount): Observable<GameState>  {
+    let token = this.stateService.getHashCode();
+    let callUrl = `${this.baseUrl}/action/${playerName}/${token}/bet/${betAmount}`;
+    return this.http.get<GameState>(callUrl);
   }
   
 }

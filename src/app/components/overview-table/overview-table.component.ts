@@ -65,7 +65,7 @@ export class OverviewTableComponent implements OnInit {
   }
 
   startNewHand() {
-    this.gameActionService.startHand();
+    this.gameActionService.startHand("Jeffrey");
   }
 
   getFaceCardNumber(card: Card) {

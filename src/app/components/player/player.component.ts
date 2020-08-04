@@ -42,12 +42,12 @@ export class PlayerComponent implements OnInit {
 
   check(player: Player) {
     let playerName = sessionStorage.getItem("playerName"); 
-    this.playerActionService.check(playerName);
-
-  }
-
-  checkMaster(player: Player) {
-    this.playerActionService.check(player.name);
+    this.playerActionService.check(playerName).subscribe( response => {
+      this.stateService.gameState.next(response);
+    }, error => {
+      // Handle error response here!!!
+      console.log(error.error);
+    });
 
   }
 
@@ -59,34 +59,32 @@ export class PlayerComponent implements OnInit {
     } else {
       callAmount = player.chipCount;
     }
-    this.playerActionService.call(playerName, callAmount);
-  }
-  callMaster(player: Player) {
-
-    let callAmount = 0; 
-    if(player.chipCount + player.currAmountThisRound >= this.stateService.gameState.value.mostRecentBetSize) {
-      callAmount = this.stateService.gameState.value.mostRecentBetSize - player.currAmountThisRound;
-    } else {
-      callAmount = player.chipCount;
-    }
-
-    this.playerActionService.call(player.name, callAmount);
-
+    this.playerActionService.call(playerName, callAmount).subscribe( response => {
+      this.stateService.gameState.next(response);
+    }, error => {
+       // Handle error response here!!!
+       console.log(error.error);
+    });
   }
 
   fold(player: Player) {
     let playerName = sessionStorage.getItem("playerName"); 
-    this.playerActionService.fold(playerName);
+    this.playerActionService.fold(playerName).subscribe( response => {
+      this.stateService.gameState.next(response);
+    }, error => {
+      // Handle error response here!!!
+      console.log(error.error);
+    });
 
-  }
-
-  foldMaster(player: Player) {
-    this.playerActionService.fold(player.name);
   }
 
   bet(player:Player, amount: number) {
     let playerName = sessionStorage.getItem("playerName"); 
-    this.playerActionService.bet(playerName, amount);
+    this.playerActionService.bet(playerName, amount).subscribe( response => {
+      this.stateService.gameState.next(response);
+    }, error => {
+      console.log(error.error);
+    });
   }
 
   getFaceCardNumber(card: Card) {

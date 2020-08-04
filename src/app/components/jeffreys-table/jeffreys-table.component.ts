@@ -13,7 +13,6 @@ import { ManagementService } from 'src/app/services/management.service';
 export class JeffreysTableComponent implements OnInit {
 
   gameState: GameState;
-  
   subscription: Subscription;
   constructor(private stateService: StateService, private gameActionService: GameActionService, 
     private managementService: ManagementService) { }
@@ -30,20 +29,16 @@ export class JeffreysTableComponent implements OnInit {
     }); 
 
     this.subscription = interval(1000).subscribe(val => {
-      console.log("triggerring the interval");
-      if(this.gameState.runStatus === "end") {
-        console.log("In the end if statement");
-        this.stateService.getMasterState(); 
-      } else {
-        let playerName = sessionStorage.getItem("playerName");
-        if(playerName != null) {
-          console.log("Refresh the game state for " + playerName);
-          this.stateService.getStateForPlayer(playerName);
-        } else {
-          console.log("Could not refresh")
-        }
+      if(sessionStorage.getItem("joinedGame") === "true") {
+        
+          let playerName = sessionStorage.getItem("playerName");
+          if(playerName != null) {
+            this.stateService.getStateForPlayer(playerName);
+          } else {
+            console.log("Could not refresh")
+          }
+        
       }
-      
     })
     
   }
@@ -83,7 +78,10 @@ export class JeffreysTableComponent implements OnInit {
   }
 
   startNewHand() {
-    this.gameActionService.startHand();
+    let playerName = sessionStorage.getItem("playerName");
+    if(playerName) {
+      this.gameActionService.startHand(playerName);
+    }
   }
 
   getFaceCardNumber(card: Card) {

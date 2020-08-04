@@ -28,7 +28,7 @@
 
 }
 
-#betButton {
+.betButton {
     padding-top: 5px;
     margin-top:5px;
     padding-bottom: 5px;
@@ -37,7 +37,7 @@
 
 }
 
-#betAmount {
+.betAmount {
     height:35px;
     width: 70px;
     padding-top: 5px;

@@ -19,9 +19,10 @@ export class CreateComponent implements OnInit {
   }
 
   createGame(playerName: string, buyinAmount: number, maxBuyin: number) {
-    this.managementService.createGame(playerName, buyinAmount, maxBuyin).subscribe( state => {
+    this.managementService.createGame(playerName, buyinAmount, maxBuyin).subscribe( hashCode => {
       console.log("Game created successfully");
-      this.stateService.gameState.next(state);
+      this.stateService.setToJoined();
+      this.stateService.setHashCode(hashCode);
       sessionStorage.setItem("playerName", playerName);
       this.router.navigate(['/jeffrey']);
     }, error => {

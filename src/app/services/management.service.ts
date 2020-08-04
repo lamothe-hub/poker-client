@@ -14,13 +14,15 @@ export class ManagementService {
     private http: HttpClient) { }
 
   addPlayer(playerName: string, playerAmount: number) {
+    this.stateService.consecutiveLoadErrors = 0;
     let addPlayerUrl = `${this.baseUrl}/management/addPlayer/${playerName}/${playerAmount}`;
-    return this.http.get<GameState>(addPlayerUrl);
+    return this.http.get<string>(addPlayerUrl);
   }
 
   createGame(playerName: string, buyinAmount: number, maxBuyin: number) {
+    this.stateService.consecutiveLoadErrors = 0;
     let createGameUrl = `${this.baseUrl}/management/createGame/${playerName}/${buyinAmount}/${maxBuyin}`;
-    return this.http.get<GameState>(createGameUrl);
+    return this.http.get<string>(createGameUrl);
   }
   
 }

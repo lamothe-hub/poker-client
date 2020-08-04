@@ -13,12 +13,12 @@ export class GameActionService {
   constructor(private stateService: StateService, 
     private http: HttpClient) { }
 
-  startHand() {
-   let foldUrl = `${this.baseUrl}/game/startHand`;
+  startHand(playerName: string) {
+   let token = this.stateService.getHashCode();
+   let foldUrl = `${this.baseUrl}/management/startHand/${playerName}/${token}`;
     this.http.get<GameState>(foldUrl).subscribe( response => {
-        this.stateService.getStateForPlayer(sessionStorage.getItem("playerName"));
-        
-    })
+        this.stateService.gameState.next(response);
+  })
 
     
   }
