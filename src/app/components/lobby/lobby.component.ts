@@ -28,7 +28,7 @@ export class LobbyComponent implements OnInit {
       this.stateService.setToJoined();
       this.stateService.setHashCode(hashCode);
       this.stateService.getStateForPlayer(playerName);
-      this.router.navigate(['/jeffrey']);
+      this.router.navigate(['/johnny']);
     }, error => {
       this.errorMessage = "That name is already taken.";
       console.error("Error: " + error.error);

@@ -1,0 +1,17 @@
+.table {
+    width: 100%;
+}
+span{ display: block; }
+.pot {
+    left: 40%;
+    position: absolute;
+    align-content: right;
+    text-align: center;
+    font-size: 50pt;
+    color: white;
+    width: 20%;
+    border-radius: 25px;
+}
+#playerContainer {
+    position: relative;
+}

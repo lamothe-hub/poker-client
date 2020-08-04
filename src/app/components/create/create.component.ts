@@ -24,7 +24,7 @@ export class CreateComponent implements OnInit {
       this.stateService.setToJoined();
       this.stateService.setHashCode(hashCode);
       sessionStorage.setItem("playerName", playerName);
-      this.router.navigate(['/jeffrey']);
+      this.router.navigate(['/johnny']);
     }, error => {
       console.error(error.error);
     })

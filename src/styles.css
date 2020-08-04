@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+.background {
+    background-color: green;
+}
+.secondary-color {
+    background-color: #36454f;
+}

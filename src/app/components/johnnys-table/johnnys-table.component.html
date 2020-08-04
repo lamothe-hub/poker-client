@@ -1,1 +1,23 @@
-<p>johnnys-table works!</p>
+<div id="playerContainer" class="container table">
+    <app-poker-table [gameState]="gameState"></app-poker-table>
+
+    <div class="row" id="secondRow">
+        <div>
+            <button [hidden]="!isMaster()"  type="button" class="options btn btn-secondary" (click)="startNewHand()">Start New Hand</button>
+        </div>
+    </div>
+    <div class="pot secondary-color">
+        <img src="assets\images\gold-coins.png" height="58" width="70" style="display: inline; padding-bottom: 15px;">
+        {{gameState.pot}}
+    </div>
+    <br>
+    <div class="col-3" [hidden]="!isMaster()">
+        <span><strong>runStatus:</strong> {{gameState.runStatus}}</span><br>
+        <span><strong>dealerName:</strong> {{gameState.dealerName}}</span><br>
+        <span><strong>masterName:</strong> {{gameState.masterName}}</span><br>
+        <span><strong>pot:</strong> {{gameState.pot}}</span><br>
+        <span><strong>mostRecentBetSize:</strong> {{gameState.mostRecentBetSize}}</span><br>
+        <span><strong>mostRecentActionReset:</strong> {{gameState.mostRecentActionReset}}</span><br>
+        <span><strong>currTurn:</strong> {{gameState.currTurn}}</span><br>
+    </div>  
+</div>

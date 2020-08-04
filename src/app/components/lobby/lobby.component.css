@@ -1,17 +1,22 @@
 .inputBox {
     margin-left: 35%;
     margin-top: 85px;
-    width: 30%;
-    height: 180px;
+    width: 33%;
+    height: 200px;
     text-align: center;
+    background-color: #36454f;
+    color: white;
     
 }
 
 button {
-    margin-top: 5px;
+    margin-top: 50px;
     width: 30%;
 }
 
 #errorMessage {
     color: red;
+}
+input{
+    margin: 8px 20px 0px 0px;
 }
